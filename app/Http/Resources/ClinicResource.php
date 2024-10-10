@@ -16,13 +16,13 @@ class ClinicResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'updated_at' => $this->updated_at,
-            'created_at' => $this->created_at,
-            'email' => $this->email,
-            'phone_number' => $this->phone_number,
-            'address' => $this->address,
             'name' => $this->name,
+            'updated_at' => $this->updated_at,
+            'phone_number' => $this->phone_number,
+            'email' => $this->email,
+            'created_at' => $this->created_at,
             'clinic_id' => $this->clinic_id,
+            'address' => $this->address,
             'vets' => VetResource::collection($this->whenLoaded('vet')),
         ];
     }

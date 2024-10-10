@@ -17,12 +17,12 @@ class MedicalRecord extends Model
     protected $primaryKey = 'medical_record_id';
 
     protected $fillable = [
-        'pet_id',
-        'vet_id',
-        'visit_date',
         'diagnosis',
+        'pet_id',
+        'prescription',
         'treatment',
-        'prescription'
+        'vet_id',
+        'visit_date'
     ];
     public function pet()
     {

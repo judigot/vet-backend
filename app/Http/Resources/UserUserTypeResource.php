@@ -16,8 +16,8 @@ class UserUserTypeResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'user_type_id' => $this->user_type_id,
             'user_id' => $this->user_id,
+            'user_type_id' => $this->user_type_id,
         ];
     }
 }

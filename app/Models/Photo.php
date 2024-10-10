@@ -17,18 +17,18 @@ class Photo extends Model
     protected $primaryKey = 'photo_id';
 
     protected $fillable = [
-        'pet_id',
         'user_id',
         'image_url',
-        'caption'
+        'caption',
+        'pet_id'
     ];
-    public function pet()
-    {
-        return $this->belongsTo(Pet::class, 'pet_id');
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function pet()
+    {
+        return $this->belongsTo(Pet::class, 'pet_id');
     }
 }

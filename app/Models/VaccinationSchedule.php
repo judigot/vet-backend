@@ -16,10 +16,10 @@ class VaccinationSchedule extends Model
     protected $primaryKey = 'vaccination_schedule_id';
 
     protected $fillable = [
-        'pet_id',
         'vaccine_name',
-        'due_date',
-        'status'
+        'status',
+        'pet_id',
+        'due_date'
     ];
     public function pet()
     {

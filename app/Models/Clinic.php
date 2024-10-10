@@ -16,10 +16,10 @@ class Clinic extends Model
     protected $primaryKey = 'clinic_id';
 
     protected $fillable = [
-        'email',
+        'name',
         'phone_number',
-        'address',
-        'name'
+        'email',
+        'address'
     ];
     public function vets()
     {

@@ -8,7 +8,6 @@ use App\Models\MedicalRecord;
 use App\Models\Photo;
 use App\Models\User;
 use App\Models\VaccinationSchedule;
-use App\Models\Vet;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -21,13 +20,13 @@ class Pet extends Model
     protected $primaryKey = 'pet_id';
 
     protected $fillable = [
-        'user_id',
         'name',
-        'breed',
-        'age',
         'weight',
+        'user_id',
+        'status',
         'medical_history',
-        'status'
+        'breed',
+        'age'
     ];
     public function user()
     {
@@ -35,19 +34,23 @@ class Pet extends Model
     }
 
 
-    public function vaccinationSchedules()
+    public function appointments()
     {
-        return $this->hasMany(VaccinationSchedule::class, 'pet_id');
+        return $this->hasMany(Appointment::class, 'pet_id');
     }
-
 
     public function medicalRecords()
     {
-        return $this->belongsToMany(Vet::class, 'medical_record', 'pet_id', 'vet_id');
+        return $this->hasMany(MedicalRecord::class, 'pet_id');
     }
 
     public function photos()
     {
-        return $this->belongsToMany(User::class, 'photo', 'pet_id', 'user_id');
+        return $this->hasMany(Photo::class, 'pet_id');
+    }
+
+    public function vaccinationSchedules()
+    {
+        return $this->hasMany(VaccinationSchedule::class, 'pet_id');
     }
 }

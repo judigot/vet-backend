@@ -16,15 +16,15 @@ class VetResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'vet_id' => $this->vet_id,
             'clinic_id' => $this->clinic_id,
+            'created_at' => $this->created_at,
+            'email' => $this->email,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-            'specialty' => $this->specialty,
             'phone_number' => $this->phone_number,
-            'email' => $this->email,
-            'created_at' => $this->created_at,
+            'specialty' => $this->specialty,
             'updated_at' => $this->updated_at,
+            'vet_id' => $this->vet_id,
             'pets' => PetResource::collection($this->whenLoaded('pet')),
             'pets' => PetResource::collection($this->whenLoaded('pet')),
         ];

@@ -3,7 +3,6 @@
 
 namespace App\Models;
 
-use App\Models\Appointment;
 use App\Models\EmergencyContact;
 use App\Models\Payment;
 use App\Models\Pet;
@@ -22,15 +21,20 @@ class User extends Model
     protected $primaryKey = 'user_id';
 
     protected $fillable = [
-        'first_name',
-        'email',
-        'password_hash',
         'phone_number',
-        'last_name'
+        'password_hash',
+        'last_name',
+        'first_name',
+        'email'
     ];
     public function emergencyContacts()
     {
         return $this->hasMany(EmergencyContact::class, 'user_id');
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'user_id');
     }
 
     public function pets()
@@ -38,16 +42,11 @@ class User extends Model
         return $this->hasMany(Pet::class, 'user_id');
     }
 
-
-    public function payments()
-    {
-        return $this->belongsToMany(Appointment::class, 'payment', 'user_id', 'appointment_id');
-    }
-
     public function photos()
     {
-        return $this->belongsToMany(Pet::class, 'photo', 'user_id', 'pet_id');
+        return $this->hasMany(Photo::class, 'user_id');
     }
+
 
     public function userUserTypes()
     {

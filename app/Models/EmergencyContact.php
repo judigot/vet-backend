@@ -16,10 +16,10 @@ class EmergencyContact extends Model
     protected $primaryKey = 'emergency_contact_id';
 
     protected $fillable = [
-        'user_id',
         'contact_name',
         'phone_number',
-        'relationship'
+        'relationship',
+        'user_id'
     ];
     public function user()
     {

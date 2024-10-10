@@ -16,12 +16,12 @@ class PhotoResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'pet_id' => $this->pet_id,
             'user_id' => $this->user_id,
-            'image_url' => $this->image_url,
-            'caption' => $this->caption,
-            'created_at' => $this->created_at,
             'photo_id' => $this->photo_id,
+            'image_url' => $this->image_url,
+            'created_at' => $this->created_at,
+            'caption' => $this->caption,
+            'pet_id' => $this->pet_id,
         ];
     }
 }

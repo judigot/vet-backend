@@ -24,11 +24,11 @@ Route::middleware('api')->group(function () {
         // GET routes for retrieving data
 
         // Find records by specific attributes
-        // Usage: http://localhost:8000/api/user-types/find-by-attributes?user_type_id=value&type_name=value
+        // Usage: http://localhost:8000/api/user-types/find-by-attributes?type_name=value&user_type_id=value
         Route::get('user-types/find-by-attributes', [UserTypeController::class, 'findByAttributes']);
 
         // Order records by specified criteria
-        // Usage: http://localhost:8000/api/user-types/order-by?column=user_type_id&direction=asc
+        // Usage: http://localhost:8000/api/user-types/order-by?column=type_name&direction=asc
         Route::get('user-types/order-by', [UserTypeController::class, 'orderBy']);
 
         // Paginate records
@@ -129,11 +129,11 @@ Route::middleware('api')->group(function () {
         // GET routes for retrieving data
 
         // Find records by specific attributes
-        // Usage: http://localhost:8000/api/users/find-by-attributes?first_name=value&email=value
+        // Usage: http://localhost:8000/api/users/find-by-attributes?updated_at=value&user_id=value
         Route::get('users/find-by-attributes', [UserController::class, 'findByAttributes']);
 
         // Order records by specified criteria
-        // Usage: http://localhost:8000/api/users/order-by?column=first_name&direction=asc
+        // Usage: http://localhost:8000/api/users/order-by?column=updated_at&direction=asc
         Route::get('users/order-by', [UserController::class, 'orderBy']);
 
         // Paginate records
@@ -232,11 +232,11 @@ Route::middleware('api')->group(function () {
         // GET routes for retrieving data
 
         // Find records by specific attributes
-        // Usage: http://localhost:8000/api/user-user-types/find-by-attributes?user_type_id=value&user_id=value
+        // Usage: http://localhost:8000/api/user-user-types/find-by-attributes?user_id=value&user_type_id=value
         Route::get('user-user-types/find-by-attributes', [UserUserTypeController::class, 'findByAttributes']);
 
         // Order records by specified criteria
-        // Usage: http://localhost:8000/api/user-user-types/order-by?column=user_type_id&direction=asc
+        // Usage: http://localhost:8000/api/user-user-types/order-by?column=user_id&direction=asc
         Route::get('user-user-types/order-by', [UserUserTypeController::class, 'orderBy']);
 
         // Paginate records
@@ -337,11 +337,11 @@ Route::middleware('api')->group(function () {
         // GET routes for retrieving data
 
         // Find records by specific attributes
-        // Usage: http://localhost:8000/api/pets/find-by-attributes?created_at=value&pet_id=value
+        // Usage: http://localhost:8000/api/pets/find-by-attributes?name=value&weight=value
         Route::get('pets/find-by-attributes', [PetController::class, 'findByAttributes']);
 
         // Order records by specified criteria
-        // Usage: http://localhost:8000/api/pets/order-by?column=created_at&direction=asc
+        // Usage: http://localhost:8000/api/pets/order-by?column=name&direction=asc
         Route::get('pets/order-by', [PetController::class, 'orderBy']);
 
         // Paginate records
@@ -440,11 +440,11 @@ Route::middleware('api')->group(function () {
         // GET routes for retrieving data
 
         // Find records by specific attributes
-        // Usage: http://localhost:8000/api/vaccination-schedules/find-by-attributes?updated_at=value&vaccination_schedule_id=value
+        // Usage: http://localhost:8000/api/vaccination-schedules/find-by-attributes?created_at=value&vaccine_name=value
         Route::get('vaccination-schedules/find-by-attributes', [VaccinationScheduleController::class, 'findByAttributes']);
 
         // Order records by specified criteria
-        // Usage: http://localhost:8000/api/vaccination-schedules/order-by?column=updated_at&direction=asc
+        // Usage: http://localhost:8000/api/vaccination-schedules/order-by?column=created_at&direction=asc
         Route::get('vaccination-schedules/order-by', [VaccinationScheduleController::class, 'orderBy']);
 
         // Paginate records
@@ -543,11 +543,11 @@ Route::middleware('api')->group(function () {
         // GET routes for retrieving data
 
         // Find records by specific attributes
-        // Usage: http://localhost:8000/api/photos/find-by-attributes?pet_id=value&user_id=value
+        // Usage: http://localhost:8000/api/photos/find-by-attributes?user_id=value&photo_id=value
         Route::get('photos/find-by-attributes', [PhotoController::class, 'findByAttributes']);
 
         // Order records by specified criteria
-        // Usage: http://localhost:8000/api/photos/order-by?column=pet_id&direction=asc
+        // Usage: http://localhost:8000/api/photos/order-by?column=user_id&direction=asc
         Route::get('photos/order-by', [PhotoController::class, 'orderBy']);
 
         // Paginate records
@@ -646,11 +646,11 @@ Route::middleware('api')->group(function () {
         // GET routes for retrieving data
 
         // Find records by specific attributes
-        // Usage: http://localhost:8000/api/emergency-contacts/find-by-attributes?user_id=value&emergency_contact_id=value
+        // Usage: http://localhost:8000/api/emergency-contacts/find-by-attributes?contact_name=value&created_at=value
         Route::get('emergency-contacts/find-by-attributes', [EmergencyContactController::class, 'findByAttributes']);
 
         // Order records by specified criteria
-        // Usage: http://localhost:8000/api/emergency-contacts/order-by?column=user_id&direction=asc
+        // Usage: http://localhost:8000/api/emergency-contacts/order-by?column=contact_name&direction=asc
         Route::get('emergency-contacts/order-by', [EmergencyContactController::class, 'orderBy']);
 
         // Paginate records
@@ -749,11 +749,11 @@ Route::middleware('api')->group(function () {
         // GET routes for retrieving data
 
         // Find records by specific attributes
-        // Usage: http://localhost:8000/api/clinics/find-by-attributes?updated_at=value&created_at=value
+        // Usage: http://localhost:8000/api/clinics/find-by-attributes?name=value&updated_at=value
         Route::get('clinics/find-by-attributes', [ClinicController::class, 'findByAttributes']);
 
         // Order records by specified criteria
-        // Usage: http://localhost:8000/api/clinics/order-by?column=updated_at&direction=asc
+        // Usage: http://localhost:8000/api/clinics/order-by?column=name&direction=asc
         Route::get('clinics/order-by', [ClinicController::class, 'orderBy']);
 
         // Paginate records
@@ -853,11 +853,11 @@ Route::middleware('api')->group(function () {
         // GET routes for retrieving data
 
         // Find records by specific attributes
-        // Usage: http://localhost:8000/api/vets/find-by-attributes?vet_id=value&clinic_id=value
+        // Usage: http://localhost:8000/api/vets/find-by-attributes?clinic_id=value&created_at=value
         Route::get('vets/find-by-attributes', [VetController::class, 'findByAttributes']);
 
         // Order records by specified criteria
-        // Usage: http://localhost:8000/api/vets/order-by?column=vet_id&direction=asc
+        // Usage: http://localhost:8000/api/vets/order-by?column=clinic_id&direction=asc
         Route::get('vets/order-by', [VetController::class, 'orderBy']);
 
         // Paginate records
@@ -956,11 +956,11 @@ Route::middleware('api')->group(function () {
         // GET routes for retrieving data
 
         // Find records by specific attributes
-        // Usage: http://localhost:8000/api/medical-records/find-by-attributes?medical_record_id=value&pet_id=value
+        // Usage: http://localhost:8000/api/medical-records/find-by-attributes?created_at=value&diagnosis=value
         Route::get('medical-records/find-by-attributes', [MedicalRecordController::class, 'findByAttributes']);
 
         // Order records by specified criteria
-        // Usage: http://localhost:8000/api/medical-records/order-by?column=medical_record_id&direction=asc
+        // Usage: http://localhost:8000/api/medical-records/order-by?column=created_at&direction=asc
         Route::get('medical-records/order-by', [MedicalRecordController::class, 'orderBy']);
 
         // Paginate records
@@ -1059,11 +1059,11 @@ Route::middleware('api')->group(function () {
         // GET routes for retrieving data
 
         // Find records by specific attributes
-        // Usage: http://localhost:8000/api/appointments/find-by-attributes?pet_id=value&vet_id=value
+        // Usage: http://localhost:8000/api/appointments/find-by-attributes?appointment_id=value&appointment_date=value
         Route::get('appointments/find-by-attributes', [AppointmentController::class, 'findByAttributes']);
 
         // Order records by specified criteria
-        // Usage: http://localhost:8000/api/appointments/order-by?column=pet_id&direction=asc
+        // Usage: http://localhost:8000/api/appointments/order-by?column=appointment_id&direction=asc
         Route::get('appointments/order-by', [AppointmentController::class, 'orderBy']);
 
         // Paginate records
@@ -1162,11 +1162,11 @@ Route::middleware('api')->group(function () {
         // GET routes for retrieving data
 
         // Find records by specific attributes
-        // Usage: http://localhost:8000/api/payments/find-by-attributes?created_at=value&payment_method=value
+        // Usage: http://localhost:8000/api/payments/find-by-attributes?appointment_id=value&created_at=value
         Route::get('payments/find-by-attributes', [PaymentController::class, 'findByAttributes']);
 
         // Order records by specified criteria
-        // Usage: http://localhost:8000/api/payments/order-by?column=created_at&direction=asc
+        // Usage: http://localhost:8000/api/payments/order-by?column=appointment_id&direction=asc
         Route::get('payments/order-by', [PaymentController::class, 'orderBy']);
 
         // Paginate records

@@ -6,7 +6,6 @@ namespace App\Models;
 use App\Models\Appointment;
 use App\Models\Clinic;
 use App\Models\MedicalRecord;
-use App\Models\Pet;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -20,11 +19,11 @@ class Vet extends Model
 
     protected $fillable = [
         'clinic_id',
+        'email',
         'first_name',
         'last_name',
-        'specialty',
         'phone_number',
-        'email'
+        'specialty'
     ];
     public function clinic()
     {
@@ -32,8 +31,13 @@ class Vet extends Model
     }
 
 
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class, 'vet_id');
+    }
+
     public function medicalRecords()
     {
-        return $this->belongsToMany(Pet::class, 'medical_record', 'vet_id', 'pet_id');
+        return $this->hasMany(MedicalRecord::class, 'vet_id');
     }
 }

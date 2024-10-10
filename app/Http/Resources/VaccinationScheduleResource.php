@@ -16,13 +16,13 @@ class VaccinationScheduleResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'updated_at' => $this->updated_at,
-            'vaccination_schedule_id' => $this->vaccination_schedule_id,
-            'pet_id' => $this->pet_id,
-            'vaccine_name' => $this->vaccine_name,
-            'due_date' => $this->due_date,
-            'status' => $this->status,
             'created_at' => $this->created_at,
+            'vaccine_name' => $this->vaccine_name,
+            'vaccination_schedule_id' => $this->vaccination_schedule_id,
+            'updated_at' => $this->updated_at,
+            'status' => $this->status,
+            'pet_id' => $this->pet_id,
+            'due_date' => $this->due_date,
         ];
     }
 }

@@ -16,14 +16,14 @@ class MedicalRecordResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'created_at' => $this->created_at,
+            'diagnosis' => $this->diagnosis,
             'medical_record_id' => $this->medical_record_id,
             'pet_id' => $this->pet_id,
+            'prescription' => $this->prescription,
+            'treatment' => $this->treatment,
             'vet_id' => $this->vet_id,
             'visit_date' => $this->visit_date,
-            'diagnosis' => $this->diagnosis,
-            'treatment' => $this->treatment,
-            'prescription' => $this->prescription,
-            'created_at' => $this->created_at,
         ];
     }
 }

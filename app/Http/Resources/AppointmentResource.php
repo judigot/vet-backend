@@ -16,14 +16,14 @@ class AppointmentResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'pet_id' => $this->pet_id,
-            'vet_id' => $this->vet_id,
-            'appointment_date' => $this->appointment_date,
             'appointment_id' => $this->appointment_id,
+            'appointment_date' => $this->appointment_date,
+            'vet_id' => $this->vet_id,
             'updated_at' => $this->updated_at,
-            'created_at' => $this->created_at,
-            'notes' => $this->notes,
             'status' => $this->status,
+            'notes' => $this->notes,
+            'created_at' => $this->created_at,
+            'pet_id' => $this->pet_id,
             'users' => UserResource::collection($this->whenLoaded('user')),
         ];
     }

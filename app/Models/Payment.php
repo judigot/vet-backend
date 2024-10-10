@@ -17,20 +17,20 @@ class Payment extends Model
     protected $primaryKey = 'payment_id';
 
     protected $fillable = [
+        'appointment_id',
+        'payment_date',
         'payment_method',
         'payment_status',
-        'payment_date',
-        'amount',
         'user_id',
-        'appointment_id'
+        'amount'
     ];
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
     public function appointment()
     {
         return $this->belongsTo(Appointment::class, 'appointment_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

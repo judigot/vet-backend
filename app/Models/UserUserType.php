@@ -14,19 +14,19 @@ class UserUserType extends Model
 
     protected $table = 'user_user_type';
 
-    protected $primaryKey = 'user_type_id';
+    protected $primaryKey = 'user_id';
 
     protected $fillable = [
-        'user_type_id',
-        'user_id'
+        'user_id',
+        'user_type_id'
     ];
-    public function userType()
-    {
-        return $this->belongsTo(UserType::class, 'user_type_id');
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function userType()
+    {
+        return $this->belongsTo(UserType::class, 'user_type_id');
     }
 }
