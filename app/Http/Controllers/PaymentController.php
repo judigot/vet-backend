@@ -11,13 +11,11 @@ use Illuminate\Http\Request;
 class PaymentController extends BaseController
 {
 
-      protected $repository;
+    protected $repository;
   
-      public function __construct(PaymentInterface $paymentRepository)
-      {
-          $this->repository = $paymentRepository;
-      }
+    public function __construct(PaymentInterface $paymentRepository)
+    {
+        $this->repository = $paymentRepository;
+    }
 
-      
-    
 }

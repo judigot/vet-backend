@@ -14,23 +14,35 @@ class Payment extends Model
 
     protected $table = 'payment';
 
-    protected $primaryKey = 'payment_id';
+    // protected $primaryKey = 'payment_id';
+
+    // protected $fillable = [
+    //     'appointment_id',
+    //     'payment_date',
+    //     'payment_method',
+    //     'payment_status',
+    //     'user_id',
+    //     'amount'
+    // ];
+    // public function appointment()
+    // {
+    //     return $this->belongsTo(Appointment::class, 'appointment_id');
+    // }
+
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class, 'user_id');
+    // }
 
     protected $fillable = [
-        'appointment_id',
-        'payment_date',
-        'payment_method',
+        'payment_id',
+        'product_name',
+        'quantity',
+        'amount',
+        'currency',
+        'payer_name',
+        'payer_email',
         'payment_status',
-        'user_id',
-        'amount'
+        'payment_method',
     ];
-    public function appointment()
-    {
-        return $this->belongsTo(Appointment::class, 'appointment_id');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
 }

@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             MedicalRecordTableSeeder::class,
             PhotoTableSeeder::class,
             EmergencyContactTableSeeder::class,
-            PaymentTableSeeder::class,
+            // PaymentTableSeeder::class,
             VaccinationScheduleTableSeeder::class,
         ]);
     }
