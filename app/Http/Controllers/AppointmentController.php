@@ -36,6 +36,14 @@ class AppointmentController extends BaseController
         return response()->json($payments);
       
       }
+
+      public function getAppointmentDetails()
+    {
+        $appointments = $this->repository->getAppointmentsWithDetails();
+        
+        // Return data as JSON or pass it to a view
+        return response()->json($appointments);
+    }
     
     
 }
