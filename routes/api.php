@@ -17,6 +17,8 @@ use App\Http\Controllers\MedicalRecordController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\PaymentController;
 
+require __DIR__ . '/appointment_routes.php';
+
 Route::middleware('api')->group(function () {
 
         // Custom routes for UserType

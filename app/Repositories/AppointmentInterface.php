@@ -13,6 +13,7 @@ use App\Repositories\BaseInterface;
 
 interface AppointmentInterface extends BaseInterface
 {
+      public function getAppointmentsWithDetails(): Collection;
 
       /**
        * Get the related Payments.
