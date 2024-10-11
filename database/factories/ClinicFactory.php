@@ -2,17 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Clinic;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
-class UserFactory extends Factory
+class ClinicFactory extends Factory
 {
-        /**
-     * The current password being used by the factory.
-     */
-    protected static ?string $password;
-
+    
 
     /**
      * Define the model's default state.
@@ -22,10 +18,10 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'address' => $this->faker->optional()->word(),
+            'clinic_id' => $this->faker->randomNumber(),
             'email' => $this->faker->unique()->safeEmail(),
-            'first_name' => $this->faker->firstName(),
-            'last_name' => $this->faker->lastName(),
-            'password_hash' => Hash::make('password'),
+            'name' => $this->faker->word(),
             'phone_number' => $this->faker->phoneNumber()
         ];
     }

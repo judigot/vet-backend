@@ -2,17 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Vet;
+use App\Models\Clinic; // Ensure the Clinic model is imported
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
 
-class UserFactory extends Factory
+class VetFactory extends Factory
 {
-        /**
-     * The current password being used by the factory.
-     */
-    protected static ?string $password;
-
+    protected $model = Vet::class;
 
     /**
      * Define the model's default state.
@@ -22,11 +18,12 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'clinic_id' => Clinic::factory(), // Generates a new Clinic record and uses its ID
             'email' => $this->faker->unique()->safeEmail(),
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
-            'password_hash' => Hash::make('password'),
-            'phone_number' => $this->faker->phoneNumber()
+            'phone_number' => $this->faker->phoneNumber(),
+            'specialty' => $this->faker->optional()->word(),
         ];
     }
 }
