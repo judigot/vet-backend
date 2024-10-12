@@ -9,8 +9,9 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\TokenRepository;
+use App\Http\Controllers\BaseController;
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
     /**
      * Register a new user.
@@ -33,6 +34,9 @@ class AuthController extends Controller
             'phone_number' => $request->phone_number,
         ]);
 
+        // Load the user types
+        $user->load('userTypes');
+
         // Generate the API token using Passport
         $token = $user->createToken('Personal Access Token')->accessToken;
 
@@ -43,29 +47,30 @@ class AuthController extends Controller
      * Login user and return the token.
      */
     public function login(Request $request)
-{
-    $credentials = $request->only('email', 'password');
+    {
+        $credentials = $request->only('email', 'password');
 
-    // Log credentials for debugging
-    Log::info('Login attempt with credentials: ', $credentials);
+        // Log credentials for debugging
+        Log::info('Login attempt with credentials: ', $credentials);
 
-    // Attempt authentication
-    if (!Auth::attempt($credentials)) {
-        Log::error('Invalid credentials: ', $credentials);
-        return response()->json(['message' => 'Invalid credentials'], 401);
+        // Attempt authentication
+        if (!Auth::attempt($credentials)) {
+            Log::error('Invalid credentials: ', $credentials);
+            return response()->json(['message' => 'Invalid credentials'], 401);
+        }
+
+        // Retrieve the authenticated user
+        $user = Auth::user();
+        $user->load('userTypes'); // Eager load user types
+
+        // Log successful authentication
+        Log::info('User authenticated: ', ['user_id' => $user->user_id]);
+
+        // Generate a token for the authenticated user
+        $token = $user->createToken('Personal Access Token')->accessToken;
+
+        return response()->json(['user' => $user, 'accessToken' => $token], 200);
     }
-
-    // Retrieve the authenticated user
-    $user = Auth::user();
-
-    // Log successful authentication
-    Log::info('User authenticated: ', ['user_id' => $user->user_id]);
-
-    // Generate a token for the authenticated user
-    $token = $user->createToken('Personal Access Token')->accessToken;
-
-    return response()->json(['token' => $token], 200);
-}
 
     /**
      * Logout user (revoke the token).
@@ -81,10 +86,25 @@ class AuthController extends Controller
     /**
      * Get the authenticated user's details.
      */
+    public function authorize(Request $request)
+    {
+        $user = $request->user();
+        $user->load('userTypes'); // Eager load user types
+
+        // Return the authenticated user's information
+        return response()->json($user);
+    }
+
+    /**
+     * Get the authenticated user's details.
+     */
     public function user(Request $request)
     {
+        $user = $request->user();
+        $user->load('userTypes'); // Eager load user types
+
         // Return the authenticated user's information
-        return response()->json($request->user());
+        return response()->json($user);
     }
 
     /**

@@ -12,7 +12,9 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:api')->group(function () {
     // Get user info
     Route::get('/user', [AuthController::class, 'user']);
-    
+
+    Route::get('/authorize', [AuthController::class, 'authorize']);
+
     // Logout route
     Route::post('/logout', [AuthController::class, 'logout']);  // Add the missing logout route
 

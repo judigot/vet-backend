@@ -79,7 +79,7 @@ class User extends Authenticatable
     /**
      * Relationship with UserType model via the user_user_type pivot table
      */
-    public function userUserTypes()
+    public function userTypes()
     {
         return $this->belongsToMany(UserType::class, 'user_user_type', 'user_id', 'user_type_id');
     }
@@ -89,6 +89,6 @@ class User extends Authenticatable
      */
     public function hasRole($role)
     {
-        return $this->userUserTypes()->where('type_name', $role)->exists();
+        return $this->userTypes()->where('type_name', $role)->exists();
     }
 }

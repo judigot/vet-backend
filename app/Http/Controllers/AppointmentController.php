@@ -5,8 +5,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
-use App\Repositories\AppointmentInterface;
 use Illuminate\Http\Request;
+use App\Http\Controllers\BaseController;
+use App\Repositories\AppointmentInterface;
 
 class AppointmentController extends BaseController
 {
@@ -16,6 +17,7 @@ class AppointmentController extends BaseController
       public function __construct(AppointmentInterface $appointmentRepository)
       {
           $this->repository = $appointmentRepository;
+          $this->middleware('auth:api');
       }
 
       
