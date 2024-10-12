@@ -2,36 +2,34 @@
 
 namespace App\Providers;
 
-use App\Repositories\PetInterface;
+use Illuminate\Support\ServiceProvider;
 
 // Import start
-use App\Repositories\VetInterface;
-use App\Repositories\PetRepository;
-use App\Repositories\UserInterface;
-use App\Repositories\VetRepository;
-use App\Repositories\PhotoInterface;
-use App\Repositories\UserRepository;
-use App\Repositories\ClinicInterface;
-use App\Repositories\PhotoRepository;
-use App\Repositories\ClinicRepository;
-use App\Repositories\PaymentInterface;
-use App\Repositories\PaymentRepository;
-use App\Repositories\UserTypeInterface;
-use Illuminate\Support\ServiceProvider;
 use App\Repositories\UserTypeRepository;
-use App\Repositories\AppointmentInterface;
-use App\Repositories\AppointmentRepository;
-use App\Repositories\UserUserTypeInterface;
-use App\Repositories\MedicalRecordInterface;
+use App\Repositories\UserTypeInterface;
+use App\Repositories\UserRepository;
+use App\Repositories\UserInterface;
 use App\Repositories\UserUserTypeRepository;
-use App\Repositories\MedicalRecordRepository;
-use App\Repositories\EmergencyContactInterface;
-use App\Repositories\EmergencyContactRepository;
-use App\Repositories\VaccinationScheduleInterface;
+use App\Repositories\UserUserTypeInterface;
+use App\Repositories\PetRepository;
+use App\Repositories\PetInterface;
 use App\Repositories\VaccinationScheduleRepository;
+use App\Repositories\VaccinationScheduleInterface;
+use App\Repositories\PhotoRepository;
+use App\Repositories\PhotoInterface;
+use App\Repositories\EmergencyContactRepository;
+use App\Repositories\EmergencyContactInterface;
+use App\Repositories\ClinicRepository;
+use App\Repositories\ClinicInterface;
+use App\Repositories\VetRepository;
+use App\Repositories\VetInterface;
+use App\Repositories\MedicalRecordRepository;
+use App\Repositories\MedicalRecordInterface;
+use App\Repositories\AppointmentRepository;
+use App\Repositories\AppointmentInterface;
+use App\Repositories\PaymentRepository;
+use App\Repositories\PaymentInterface;
 // Import end
-
-use Laravel\Passport\Passport; // Add this import for Passport
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -41,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         // Bind start
-        $this->app->bind(UserTypeInterface::class, UserTypeRepository::class);
+$this->app->bind(UserTypeInterface::class, UserTypeRepository::class);
         $this->app->bind(UserInterface::class, UserRepository::class);
         $this->app->bind(UserUserTypeInterface::class, UserUserTypeRepository::class);
         $this->app->bind(PetInterface::class, PetRepository::class);
@@ -53,7 +51,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(MedicalRecordInterface::class, MedicalRecordRepository::class);
         $this->app->bind(AppointmentInterface::class, AppointmentRepository::class);
         $this->app->bind(PaymentInterface::class, PaymentRepository::class);
-        // Bind end
+// Bind end
     }
 
     /**
@@ -62,9 +60,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
-        // Register Passport routes manually
-        if (class_exists(Passport::class)) {
-            Passport::loadKeysFrom(base_path('secret-keys')); // Optional: if you're storing keys in a different location
-        }
     }
 }
