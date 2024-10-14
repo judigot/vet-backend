@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Laravel\Passport\TokenRepository;
 use App\Http\Controllers\BaseController;
 
 class AuthController extends BaseController
@@ -50,27 +47,36 @@ class AuthController extends BaseController
     {
         $credentials = $request->only('email', 'password');
 
-        // Log credentials for debugging
-        Log::info('Login attempt with credentials: ', $credentials);
-
         // Attempt authentication
         if (!Auth::attempt($credentials)) {
-            Log::error('Invalid credentials: ', $credentials);
-            return response()->json(['message' => 'Invalid credentials'], 401);
+            $user = User::where('email', $credentials['email'])->first();
+            // User does not exist
+            if (!$user) {
+                return response()->json([
+                    'status' => 404,
+                    'message' => 'User not found',
+                    'error_code' => 'USER_NOT_FOUND'
+                ], 404);
+            }
+
+            // Invalid password or credentials
+            return response()->json([
+                'status' => 401,
+                'message' => 'Invalid credentials',
+                'error_code' => 'INVALID_CREDENTIALS'
+            ], 401);
         }
 
-        // Retrieve the authenticated user
         $user = Auth::user();
-        $user->load('userTypes'); // Eager load user types
+        $user->load('userTypes');
 
-        // Log successful authentication
-        Log::info('User authenticated: ', ['user_id' => $user->user_id]);
-
-        // Generate a token for the authenticated user
         $token = $user->createToken('Personal Access Token')->accessToken;
-
-        return response()->json(['user' => $user, 'accessToken' => $token], 200);
+        return response()->json([
+            'user' => $user,
+            'accessToken' => $token,
+        ], 200);
     }
+
 
     /**
      * Logout user (revoke the token).
