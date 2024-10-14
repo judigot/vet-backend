@@ -15,11 +15,14 @@ use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\VetController;
 use App\Http\Controllers\MedicalRecordController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\PaymentController;
 
 require __DIR__ . '/appointment_routes.php';
 
 Route::middleware('api')->group(function () {
+        //To MyPage
+        Route::get('/my-page', [MyPageController::class, 'showMyPage']);
 
         // Custom routes for UserType
         Route::get('user-types/{id}/users', [UserTypeController::class, 'getUserUserTypes']);
@@ -1261,4 +1264,8 @@ Route::middleware('api')->group(function () {
       
         // Resource routes for Payment
         Route::resource('payments', PaymentController::class);
+
+
+        
+        
 });
